@@ -1,0 +1,18 @@
+---
+    
+- name: grafana is installed
+  package:
+    name:
+      - grafana
+      - urw-fonts
+      - fontconfig
+      - freetype
+    state: present
+
+- name: grafana is started
+  service:
+    name: grafana-server
+    state: started
+    enabled: true
+
+...

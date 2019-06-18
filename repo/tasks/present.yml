@@ -1,0 +1,20 @@
+# vim: set ft=yaml ts=2:
+---
+
+- name: RPM-GPG-KEY is present
+  copy:
+    src: RPM-GPG-KEY-grafana
+    dest: /etc/pki/rpm-gpg/
+
+- name: RPM-GPG-KEY is imported
+  rpm_key:
+    key: /etc/pki/rpm-gpg/RPM-GPG-KEY-grafana
+    state: present
+
+- name: yum repo is present
+  copy:
+    src: grafana.repo
+    dest: /etc/yum.repos.d/
+    backup: true
+
+...
